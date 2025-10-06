@@ -25,9 +25,9 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/logo.png" 
-              alt="Srinivasa Polypack Logo" 
+            <img
+              src="/lovable-uploads/logo.png"
+              alt="Srinivasa Polypack Logo"
               className="w-10 h-10 object-contain"
             />
             <div className="hidden sm:block">
@@ -57,7 +57,7 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Button asChild className="hero-gradient">
-              <Link to="/contact">
+              <Link to="/contact#quote">
                 <Phone className="w-4 h-4 mr-2" />
                 Get Quote
               </Link>
@@ -95,7 +95,7 @@ const Navigation = () => {
                 </Link>
               ))}
               <Button asChild className="hero-gradient mt-4 mx-4">
-                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <Link to="/contact#quote" onClick={() => setIsOpen(false)}>
                   <Phone className="w-4 h-4 mr-2" />
                   Get Quote
                 </Link>
