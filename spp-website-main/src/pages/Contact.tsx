@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,10 +10,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send, Factory, Globe, Award, Users } from "lucide-react";
 import emailjs from '@emailjs/browser';
+
 const Contact = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  const location = useLocation();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,35 +25,89 @@ const Contact = () => {
     quantity: "",
     message: ""
   });
+
+  // Scroll to quote form when coming from "Get Quote" button
+  useEffect(() => {
+    if (location.hash === '#quote') {
+      setTimeout(() => {
+        const quoteSection = document.getElementById('quote-form');
+        if (quoteSection) {
+          quoteSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Create mailto URL with form data as fallback
+    const subject = `Quote Request from ${formData.name}`;
+    const body = `
+Dear Srinivasa Polypack Team,
+
+I would like to request a quote for LDPE packaging solutions.
+
+Contact Details:
+- Name: ${formData.name}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- Company: ${formData.company || 'Not provided'}
+
+Requirements:
+- Industry: ${formData.industry || 'Not specified'}
+- Product Type: ${formData.productType || 'Not specified'}
+- Expected Quantity: ${formData.quantity || 'Not specified'}
+
+Message:
+${formData.message || 'No additional message'}
+
+Best regards,
+${formData.name}
+    `.trim();
+
     try {
-      // Initialize EmailJS if not already done
-      emailjs.init("YOUR_PUBLIC_KEY"); // We'll need to set this up
+      // Check if EmailJS is properly configured
+      if (typeof emailjs !== 'undefined' && emailjs.send) {
+        // Initialize EmailJS with your public key
+        emailjs.init("UULtUnx9zo95qArfG");
 
-      // Prepare email template parameters
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        company: formData.company || 'Not provided',
-        industry: formData.industry || 'Not specified',
-        product_type: formData.productType,
-        quantity: formData.quantity,
-        message: formData.message,
-        to_email: 'srinivasapolypack@yahoo.com',
-        reply_to: formData.email
-      };
+        // Prepare email template parameters
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          company: formData.company || 'Not provided',
+          industry: formData.industry || 'Not specified',
+          product_type: formData.productType,
+          quantity: formData.quantity,
+          message: formData.message,
+          to_email: 'srinivasapolypack@yahoo.com',
+          reply_to: formData.email
+        };
 
-      // For now, let's use a simple success response while we set up EmailJS
-      console.log('Contact Form Submission:', formData);
+        // Send email via EmailJS
+        await emailjs.send('service_v5nbfmy', 'template_2ewmtjf', templateParams);
 
-      // Simulate email sending
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      toast({
-        title: "Message Sent Successfully!",
-        description: "We'll get back to you within 24 hours with a detailed quote."
-      });
+        toast({
+          title: "Quote Request Sent Successfully!",
+          description: "We'll get back to you within 24 hours with a detailed quote."
+        });
+      } else {
+        // Fallback: Open default email client with pre-filled content
+        const mailtoUrl = `mailto:srinivasapolypack@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(mailtoUrl, '_blank');
+
+        toast({
+          title: "Email Client Opened!",
+          description: "Please send the pre-filled email to complete your quote request."
+        });
+      }
+
+      // Clear form after successful submission
       setFormData({
         name: "",
         email: "",
@@ -62,21 +118,29 @@ const Contact = () => {
         quantity: "",
         message: ""
       });
+
     } catch (error) {
       console.error('Contact form error:', error);
+
+      // Fallback: Open email client if EmailJS fails
+      const mailtoUrl = `mailto:srinivasapolypack@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoUrl, '_blank');
+
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try calling us directly at +91 9866106621.",
+        title: "Opened Email Client",
+        description: "EmailJS unavailable. Please send the pre-filled email or call us at +91 9866106621.",
         variant: "destructive"
       });
     }
   };
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
   };
+
   const contactInfo = [{
     icon: <MapPin className="w-6 h-6 text-primary" />,
     title: "Our Location",
@@ -84,7 +148,7 @@ const Contact = () => {
   }, {
     icon: <Phone className="w-6 h-6 text-primary" />,
     title: "Phone Numbers",
-    details: ["+91 9866106621", "+91 8885016621", "+91 7997766179"]
+    details: ["+91 9666511637", "+91 9866106621"]
   }, {
     icon: <Mail className="w-6 h-6 text-primary" />,
     title: "Email Addresses",
@@ -94,6 +158,7 @@ const Contact = () => {
     title: "Business Hours",
     details: ["Monday - Saturday: 9:30 AM - 6:00 PM", "Sunday: Closed"]
   }];
+
   const quickActions = [{
     icon: <MessageSquare className="w-8 h-8 text-green-600" />,
     title: "WhatsApp",
@@ -105,16 +170,17 @@ const Contact = () => {
     title: "Call Now",
     description: "Speak directly with us",
     action: "Call +91 9666511637",
-    action2: "Call +91 9666511637",
-    link: "tel:+919866106621",
-    link2: "tel:+918885016621"
+    action2: "Call +91 9866106621",
+    link: "tel:+919666511637",
+    link2: "tel:+919866106621"
   }, {
     icon: <Mail className="w-8 h-8 text-purple-600" />,
     title: "Email Us",
     description: "Send detailed requirements",
     action: "Send Email",
-    link: "mailto:srinivasapolypack@yahoo.com"
+    link: "mailto:srinivasapolypack@yahoo.com?subject=Quote%20Request%20for%20LDPE%20Packaging&body=Dear%20Srinivasa%20Polypack%20Team,%0D%0A%0D%0AI%20am%20interested%20in%20your%20LDPE%20packaging%20solutions%20and%20would%20like%20to%20request%20a%20quote.%0D%0A%0D%0APlease%20provide%20details%20for:%0D%0A-%20Product%20Type:%20%0D%0A-%20Quantity%20Required:%20%0D%0A-%20Specifications:%20%0D%0A-%20Delivery%20Location:%20%0D%0A%0D%0AThank%20you%20for%20your%20time.%0D%0A%0D%0ABest%20regards"
   }];
+
   const companyHighlights = [{
     icon: <Factory className="w-6 h-6 text-primary" />,
     title: "Custom Packing Solutions",
@@ -132,9 +198,11 @@ const Contact = () => {
     title: "Pan-India Delivery",
     description: "Reliable supply chain network"
   }];
-  return <div className="min-h-screen">
+
+  return (
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-primary-foreground section-padding py-32 lg:pt-52" style={{ height:"70vh"}}>
+      <section className="hero-gradient text-primary-foreground section-padding py-32 lg:pt-52" style={{ height: "70vh" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Badge variant="secondary" className="mb-6">
@@ -162,7 +230,8 @@ const Contact = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {quickActions.map((action, index) => <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow text-center">
+            {quickActions.map((action, index) => (
+              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow text-center">
                 <CardContent className="p-6">
                   <div className="mb-4 flex justify-center">{action.icon}</div>
                   <h3 className="text-xl font-semibold mb-2 text-foreground">{action.title}</h3>
@@ -173,38 +242,53 @@ const Contact = () => {
                         {action.action}
                       </a>
                     </Button>
-                    {action.action2 && <Button asChild variant="outline" className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700">
+                    {action.action2 && (
+                      <Button asChild variant="outline" className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700">
                         <a href={action.link2} target="_blank" rel="noopener noreferrer">
                           {action.action2}
                         </a>
-                      </Button>}
-                    {action.link.includes('mailto:') && <Button variant="outline" className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700" onClick={() => {
-                  navigator.clipboard.writeText("srinivasapolypack@yahoo.com");
-                  toast({
-                    title: "Email Copied!",
-                    description: "srinivasapolypack@yahoo.com copied to clipboard"
-                  });
-                }}>
+                      </Button>
+                    )}
+                    {action.link.includes('mailto:') && (
+                      <Button
+                        variant="outline"
+                        className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700"
+                        onClick={() => {
+                          navigator.clipboard.writeText("srinivasapolypack@yahoo.com");
+                          toast({
+                            title: "Email Copied!",
+                            description: "srinivasapolypack@yahoo.com copied to clipboard"
+                          });
+                        }}
+                      >
                         Copy Email
-                      </Button>}
-                    {action.link.includes('wa.me') && <Button variant="outline" className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700" onClick={() => {
-                  navigator.clipboard.writeText("+91 7997766179 ");
-                  toast({
-                    title: "Number Copied!",
-                    description: "+91 7997766179 copied to clipboard"
-                  });
-                }}>
+                      </Button>
+                    )}
+                    {action.link.includes('wa.me') && (
+                      <Button
+                        variant="outline"
+                        className="w-full bg-blue-100 border-blue-400 text-blue-700 hover:bg-blue-200 hover:border-blue-500 hover:text-blue-700"
+                        onClick={() => {
+                          navigator.clipboard.writeText("+91 7997766179");
+                          toast({
+                            title: "Number Copied!",
+                            description: "+91 7997766179 copied to clipboard"
+                          });
+                        }}
+                      >
                         Copy Number
-                      </Button>}
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="section-padding section-gradient">
+      <section id="quote-form" className="section-padding section-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -220,29 +304,53 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Full Name *</Label>
-                      <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} placeholder="Enter your full name" required />
+                      <Input
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        placeholder="Enter your full name"
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} placeholder="Enter your email" required />
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} placeholder="+91 98765 43210" required />
+                      <Input
+                        id="phone"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        placeholder="+91 98765 43210"
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="company">Company Name</Label>
-                      <Input id="company" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} placeholder="Your company name" />
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => handleInputChange("company", e.target.value)}
+                        placeholder="Your company name"
+                      />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="industry">Industry Type</Label>
-                      <Select value={formData.industry} onValueChange={value => handleInputChange("industry", value)}>
+                      <Select value={formData.industry} onValueChange={(value) => handleInputChange("industry", value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select your industry" />
                         </SelectTrigger>
@@ -258,7 +366,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <Label htmlFor="productType">Product Type</Label>
-                      <Select value={formData.productType} onValueChange={value => handleInputChange("productType", value)}>
+                      <Select value={formData.productType} onValueChange={(value) => handleInputChange("productType", value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select product type" />
                         </SelectTrigger>
@@ -279,12 +387,23 @@ const Contact = () => {
 
                   <div>
                     <Label htmlFor="quantity">Expected Quantity (per month)</Label>
-                    <Input id="quantity" value={formData.quantity} onChange={e => handleInputChange("quantity", e.target.value)} placeholder="e.g., 5000 pieces/kgs" />
+                    <Input
+                      id="quantity"
+                      value={formData.quantity}
+                      onChange={(e) => handleInputChange("quantity", e.target.value)}
+                      placeholder="e.g., 5000 pieces/kgs"
+                    />
                   </div>
 
                   <div>
                     <Label htmlFor="message">Requirements & Message</Label>
-                    <Textarea id="message" value={formData.message} onChange={e => handleInputChange("message", e.target.value)} placeholder="Please describe your specific requirements, sizes, colors, or any special features needed..." rows={4} />
+                    <Textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => handleInputChange("message", e.target.value)}
+                      placeholder="Please describe your specific requirements, sizes, colors, or any special features needed..."
+                      rows={4}
+                    />
                   </div>
 
                   <Button type="submit" size="lg" className="hero-gradient w-full">
@@ -297,7 +416,8 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-6">
-              {contactInfo.map((info, index) => <Card key={index} className="shadow-card">
+              {contactInfo.map((info, index) => (
+                <Card key={index} className="shadow-card">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       {info.icon}
@@ -306,14 +426,17 @@ const Contact = () => {
                           {info.title}
                         </h3>
                         <div className="space-y-1">
-                          {info.details.map((detail, detailIndex) => <p key={detailIndex} className="text-muted-foreground">
+                          {info.details.map((detail, detailIndex) => (
+                            <p key={detailIndex} className="text-muted-foreground">
                               {detail}
-                            </p>)}
+                            </p>
+                          ))}
                         </div>
                       </div>
                     </div>
                   </CardContent>
-                </Card>)}
+                </Card>
+              ))}
             </div>
           </div>
         </div>
@@ -348,17 +471,19 @@ const Contact = () => {
             <div>
               <h3 className="text-xl font-bold text-foreground mb-4">Why Choose Our Location?</h3>
               <div className="space-y-4">
-                {companyHighlights.map((highlight, index) => <div key={index} className="flex items-start space-x-3">
+                {companyHighlights.map((highlight, index) => (
+                  <div key={index} className="flex items-start space-x-3">
                     {highlight.icon}
                     <div>
                       <h4 className="font-semibold text-foreground">{highlight.title}</h4>
                       <p className="text-muted-foreground text-sm">{highlight.description}</p>
                     </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
 
               <Button asChild className="hero-gradient w-full mt-6">
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/maps?q=17.5246065,78.4347118" target="_blank" rel="noopener noreferrer">
                   <MapPin className="w-4 h-4 mr-2" />
                   Get Directions
                 </a>
@@ -375,10 +500,10 @@ const Contact = () => {
             Ready to Get Started?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join hundreds of satisfied customers who trust Srinivasa Polypack 
+            Join hundreds of satisfied customers who trust Srinivasa Polypack
             for their LDPE packaging requirements. Contact us today!
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="shadow-elevated">
               <a href="tel:+919866106621">
@@ -395,6 +520,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default Contact;

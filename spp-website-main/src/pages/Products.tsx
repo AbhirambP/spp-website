@@ -11,7 +11,7 @@ import {
   Phone
 } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
-import bagsShowcase from "@/assets/ldpe-bags-showcase.jpg";
+import bagsShowcase from "@/assets/ldpe-bags-showcase.png";
 import polytheneSheets from "@/assets/polythene-sheets.jpg";
 import polytheneSheetsNew from "@/assets/polythene-sheets-new.jpg";
 import antistaticBagsNew from "@/assets/antistatic-bags-new.jpg";
@@ -135,7 +135,7 @@ const Products = () => {
     },
     {
       icon: <Ruler className="w-6 h-6 text-primary" />,
-      title: "Custom Sizes", 
+      title: "Custom Sizes",
       description: "Flexible manufacturing to produce bags in any size as per your specifications"
     },
     {
@@ -148,7 +148,7 @@ const Products = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSection 
+      <HeroSection
         backgroundImage={bagsShowcase}
         altText="LDPE Products Showcase"
       >
@@ -161,7 +161,7 @@ const Products = () => {
             Our Product Range
           </h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Comprehensive selection of high-quality LDPE polythene bags designed for 
+            Comprehensive selection of high-quality LDPE polythene bags designed for
             pharmaceutical, industrial, and food-grade applications.
           </p>
         </div>
@@ -185,13 +185,13 @@ const Products = () => {
                 <div className="grid lg:grid-cols-3 gap-6">
                   {/* Product Image */}
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                    <img 
+                    <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  
+
                   {/* Product Content */}
                   <div className="lg:col-span-2">
                     <CardHeader>
@@ -200,33 +200,33 @@ const Products = () => {
                     </CardHeader>
                     <CardContent>
                       <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Specifications */}
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-3">Specifications</h4>
-                       <ul className="space-y-2">
-                         {product.specifications.map((spec, specIndex) => {
-                           console.log(`Product: ${product.name}, Spec ${specIndex}:`, spec);
-                           return (
-                           <li key={specIndex} className="flex items-start space-x-2">
-                            <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                             <span className="text-muted-foreground text-sm">{spec}</span>
-                           </li>
-                           );
-                         })}
-                      </ul>
-                    </div>
+                        {/* Specifications */}
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-3">Specifications</h4>
+                          <ul className="space-y-2">
+                            {product.specifications.map((spec, specIndex) => {
+                              console.log(`Product: ${product.name}, Spec ${specIndex}:`, spec);
+                              return (
+                                <li key={specIndex} className="flex items-start space-x-2">
+                                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                                  <span className="text-muted-foreground text-sm">{spec}</span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
 
-                    {/* Applications */}
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-3">Applications</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {product.applications.map((app, appIndex) => (
-                          <Badge key={appIndex} variant="secondary" className="text-xs">
-                            {app}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
+                        {/* Applications */}
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-3">Applications</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {product.applications.map((app, appIndex) => (
+                              <Badge key={appIndex} variant="secondary" className="text-xs">
+                                {app}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
                       </div>
 
                       <div className="mt-6 pt-6 border-t border-border">
@@ -281,10 +281,10 @@ const Products = () => {
             Need Custom Solutions?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Our experienced team can develop custom LDPE packaging solutions 
+            Our experienced team can develop custom LDPE packaging solutions
             tailored to your specific requirements and industry standards.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="shadow-elevated">
               <Link to="/contact">

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  CheckCircle, 
-  Shield, 
-  Users, 
+import {
+  CheckCircle,
+  Shield,
+  Users,
   Award,
   ArrowRight,
   Phone,
@@ -37,7 +37,7 @@ const Home = () => {
     },
     {
       icon: <Shield className="w-8 h-8 text-primary" />,
-      title: "Quality Assured", 
+      title: "Quality Assured",
       description: "ISO 9001:2015 certified processes ensuring consistent quality and reliability."
     },
     {
@@ -103,7 +103,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSection 
+      <HeroSection
         backgroundImage={heroImage}
         altText="Blown Film Plant in Operation - Srinivasa Polypack"
       >
@@ -114,14 +114,14 @@ const Home = () => {
               ISO 9001:2015 Certified
             </Badge>
             <h1 className="text-4xl lg:text-7xl font-bold mb-6 leading-tight">
-              Premium LDPE 
+              Premium LDPE
               <span className="block text-blue-200 lg:text-6xl">Polythene Bags</span>
             </h1>
             <p className="text-2xl mb-8 text-blue-100 max-w-lg">
-              Leading manufacturer and supplier of high-quality LDPE polythene bags for 
+              Leading manufacturer and supplier of high-quality LDPE polythene bags for
               pharmaceutical and industrial applications across India.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mt-14">
               <Button asChild size="lg" variant="secondary" className="shadow-elevated">
                 <Link to="/products">
@@ -130,7 +130,7 @@ const Home = () => {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="secondary" className="shadow-elevated">
-                <Link to="/contact">
+                <Link to="/contact#quote">
                   <Phone className="w-5 h-5 mr-2" />
                   Get Quote Now
                 </Link>
@@ -164,7 +164,7 @@ const Home = () => {
               Why Choose Srinivasa Polypack?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Combining decades of expertise with cutting-edge technology to deliver 
+              Combining decades of expertise with cutting-edge technology to deliver
               superior LDPE packaging solutions that exceed industry standards.
             </p>
           </div>
@@ -193,7 +193,7 @@ const Home = () => {
               Our Product Range
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive selection of LDPE polythene bags designed for diverse 
+              Comprehensive selection of LDPE polythene bags designed for diverse
               pharmaceutical, food and industrial applications.
             </p>
           </div>
@@ -202,7 +202,7 @@ const Home = () => {
             {products.map((product, index) => (
               <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow overflow-hidden">
                 <div className="aspect-video overflow-hidden">
-                  <img 
+                  <img
                     src={product.image}
                     alt={product.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -232,14 +232,14 @@ const Home = () => {
                 Uncompromising Quality Standards
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Our commitment to excellence is reflected in our comprehensive quality 
+                Our commitment to excellence is reflected in our comprehensive quality
                 management system and internationally recognized certifications.
               </p>
-              
+
               <div className="space-y-4 mb-8">
                 {[
                   "ISO 9001:2015 Quality Management System",
-                  "ZED (Zero Defect Zero Effect) Certification", 
+                  "ZED (Zero Defect Zero Effect) Certification",
                   "MSME (Micro, Small & Medium Enterprises) Registered"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
@@ -252,17 +252,17 @@ const Home = () => {
             </div>
 
             <div className="flex gap-4 justify-center">
-              <img 
+              <img
                 src={isoLogoNew}
                 alt="ISO 9001:2015 Quality Management System Certification Logo"
                 className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
               />
-              <img 
+              <img
                 src={zedLogoNew}
                 alt="ZED (Zero Defect Zero Effect) Certification Logo"
                 className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
               />
-              <img 
+              <img
                 src={msmeLogoNew}
                 alt="MSME (Micro, Small & Medium Enterprises) Government of India Certification Logo"
                 className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
@@ -281,10 +281,10 @@ const Home = () => {
           <p className="text-xl mb-8 text-blue-100">
             Get in touch today for custom LDPE packaging solutions tailored to your requirements.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="shadow-elevated">
-              <Link to="/contact">
+              <Link to="/contact#quote">
                 <Phone className="w-5 h-5 mr-2" />
                 Request Quote
               </Link>
