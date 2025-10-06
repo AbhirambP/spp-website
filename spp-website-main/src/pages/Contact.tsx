@@ -483,7 +483,7 @@ ${formData.name}
               </div>
 
               <Button asChild className="hero-gradient w-full mt-6">
-                <a href="https://www.google.com/maps?q=17.5246065,78.4347118" target="_blank" rel="noopener noreferrer">
+                <a href="https://maps.app.goo.gl/bxCQFSCP7C63CvtQ6?g_st=aw" target="_blank" rel="noopener noreferrer">
                   <MapPin className="w-4 h-4 mr-2" />
                   Get Directions
                 </a>
