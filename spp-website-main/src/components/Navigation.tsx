@@ -24,15 +24,15 @@ const Navigation = () => {
       <div className="mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
             <img
               src="/lovable-uploads/logo.png"
               alt="Srinivasa Polypack Logo"
               className="w-10 h-10 object-contain"
             />
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground">Srinivasa Polypack</h1>
-              <p className="text-xs text-black">Quality LDPE Solutions</p>
+            <div>
+              <h1 className="text-sm sm:text-xl font-bold text-foreground">Srinivasa Polypack</h1>
+              <p className="text-xs text-black hidden sm:block">Quality LDPE Solutions</p>
             </div>
           </Link>
 
