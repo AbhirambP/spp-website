@@ -506,9 +506,9 @@ ${formData.name}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="shadow-elevated">
-              <a href="tel:+919866106621">
+              <a href="tel:+9666511637">
                 <Phone className="w-5 h-5 mr-2" />
-                Call Now: +91 9866106621
+                Call Now: +91 9666511637
               </a>
             </Button>
             <Button asChild size="lg" variant="secondary" className="shadow-elevated">

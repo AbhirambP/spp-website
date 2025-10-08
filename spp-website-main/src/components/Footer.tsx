@@ -18,7 +18,7 @@ const Footer = () => {
   const products = [
     "LDPE Polythene Bags",
     "Antistatic Polythene Bags",
-    "Rolls", 
+    "Rolls",
     "Polythene Sheets",
     "VCI Polythene Bags",
     "Self Seal Covers",
@@ -33,9 +33,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/lovable-uploads/logo.png" 
-                alt="Srinivasa Polypack Logo" 
+              <img
+                src="/lovable-uploads/logo.png"
+                alt="Srinivasa Polypack Logo"
                 className="w-12 h-12 object-contain"
               />
               <div>
@@ -44,10 +44,10 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Leading manufacturer and supplier of high-quality LDPE polythene bags for pharmaceutical 
+              Leading manufacturer and supplier of high-quality LDPE polythene bags for pharmaceutical
               and industrial applications. Committed to excellence and customer satisfaction.
             </p>
-            
+
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
@@ -55,7 +55,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+91 9866106621</span>
+                <span>+91 9666511637</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
@@ -105,7 +105,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-            
+
             <div className="mt-6">
               <h5 className="font-medium text-foreground mb-2">Certifications</h5>
               <div className="flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Srinivasa Polypack. All rights reserved. | 
+            © {new Date().getFullYear()} Srinivasa Polypack. All rights reserved. |
             Designed for excellence in LDPE manufacturing.
           </p>
         </div>
