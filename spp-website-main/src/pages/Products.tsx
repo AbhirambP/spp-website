@@ -231,7 +231,7 @@ const Products = () => {
 
                       <div className="mt-6 pt-6 border-t border-border">
                         <Button asChild className="hero-gradient">
-                          <Link to="/contact">
+                          <Link to="/contact#quote">
                             <Phone className="w-4 h-4 mr-2" />
                             Request Quote for {product.name}
                           </Link>
