@@ -128,6 +128,29 @@ All colors MUST be HSL.
   }
 }
 
+/* Desktop density tuning: keep mobile readable (16px), scale down typography/spacing on wider screens */
+@media (min-width: 768px) {
+  html {
+    font-size: 15px;
+    /* ~94% of default */
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 14px;
+    /* ~88% of default for roomy desktops */
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    /* Slightly tighter vertical rhythm on very large screens */
+    --section-padding: 3rem 0;
+    --container-padding: 0.75rem;
+  }
+}
+
 @layer components {
   .hero-gradient {
     background: var(--gradient-hero);

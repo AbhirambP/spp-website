@@ -107,22 +107,22 @@ const Home = () => {
         backgroundImage={heroImage}
         altText="Blown Film Plant in Operation - Srinivasa Polypack"
       >
-        <div className="grid lg:grid-cols-1 gap-12 items-center">
+        <div className="grid lg:grid-cols-1 gap-10 items-center">
           <div>
             <Badge variant="secondary" className="mb-6">
               <Star className="w-4 h-4 mr-2" />
               ISO 9001:2015 Certified
             </Badge>
-            <h1 className="text-4xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight tracking-tight">
               Premium LDPE
-              <span className="block text-blue-200 lg:text-6xl">Polythene Bags</span>
+              <span className="block text-blue-200 text-2xl sm:text-4xl lg:text-5xl">Polythene Bags</span>
             </h1>
-            <p className="text-2xl mb-8 text-blue-100 max-w-lg">
+            <p className="text-lg sm:text-xl mb-8 text-blue-100 max-w-2xl">
               Leading manufacturer and supplier of high-quality LDPE polythene bags for
               pharmaceutical and industrial applications across India.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-14">
+            <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <Button asChild size="lg" variant="secondary" className="shadow-elevated">
                 <Link to="/products">
                   View Our Products
@@ -159,11 +159,11 @@ const Home = () => {
       {/* Features Section */}
       <section className="section-padding section-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
               Why Choose Srinivasa Polypack?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
               Combining decades of expertise with cutting-edge technology to deliver
               superior LDPE packaging solutions that exceed industry standards.
             </p>
@@ -188,11 +188,11 @@ const Home = () => {
       {/* Products Showcase */}
       <section className="section-padding bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
               Our Product Range
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
               Comprehensive selection of LDPE polythene bags designed for diverse
               pharmaceutical, food and industrial applications.
             </p>
@@ -228,10 +228,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-5">
                 Uncompromising Quality Standards
               </h2>
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-base sm:text-lg text-muted-foreground mb-6">
                 Our commitment to excellence is reflected in our comprehensive quality
                 management system and internationally recognized certifications.
               </p>
@@ -255,17 +255,17 @@ const Home = () => {
               <img
                 src={isoLogoNew}
                 alt="ISO 9001:2015 Quality Management System Certification Logo"
-                className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
+                className="rounded-2xl shadow-elevated w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 object-contain"
               />
               <img
                 src={zedLogoNew}
                 alt="ZED (Zero Defect Zero Effect) Certification Logo"
-                className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
+                className="rounded-2xl shadow-elevated w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 object-contain"
               />
               <img
                 src={msmeLogoNew}
                 alt="MSME (Micro, Small & Medium Enterprises) Government of India Certification Logo"
-                className="rounded-2xl shadow-elevated w-40 h-40 object-contain"
+                className="rounded-2xl shadow-elevated w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 object-contain"
               />
             </div>
           </div>
@@ -275,10 +275,10 @@ const Home = () => {
       {/* CTA Section */}
       <section className="section-padding hero-gradient text-primary-foreground">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-5">
             Ready to Partner with Us?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-base sm:text-lg mb-6 text-blue-100">
             Get in touch today for custom LDPE packaging solutions tailored to your requirements.
           </p>
 
