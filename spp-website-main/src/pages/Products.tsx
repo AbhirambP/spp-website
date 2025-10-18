@@ -146,7 +146,7 @@ const Products = () => {
   ];
 
   return (
-    <div className="min-h-screen overflow-x-clip">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection
         backgroundImage={bagsShowcase}
@@ -182,13 +182,13 @@ const Products = () => {
           <div className="grid gap-8">
             {products.map((product, index) => (
               <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow">
-                <div className="grid lg:grid-cols-3 gap-6">
+                <div className="grid w-full lg:grid-cols-3 gap-6">
                   {/* Product Image */}
-                  <div className="aspect-video overflow-hidden rounded-lg bg-muted">
+                  <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full max-w-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
 
