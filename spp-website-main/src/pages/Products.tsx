@@ -184,11 +184,11 @@ const Products = () => {
               <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-md mx-auto px-2 sm:px-4">
                 <div className="grid w-full max-w-full lg:grid-cols-3 gap-6">
                   {/* Product Image */}
-                  <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full">
+                  <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full max-h-48 sm:max-h-64 flex items-center justify-center">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full max-w-full object-contain hover:scale-105 transition-transform duration-300"
+                      className="block max-w-full max-h-44 sm:max-h-56 w-auto h-auto object-contain m-auto"
                     />
                   </div>
 
