@@ -181,8 +181,8 @@ const Products = () => {
 
           <div className="grid gap-8">
             {products.map((product, index) => (
-              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow">
-                <div className="grid w-full lg:grid-cols-3 gap-6">
+              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-full px-2 sm:px-4">
+                <div className="grid w-full max-w-full lg:grid-cols-3 gap-6">
                   {/* Product Image */}
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full">
                     <img
