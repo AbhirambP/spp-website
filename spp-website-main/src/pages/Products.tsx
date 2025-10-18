@@ -179,12 +179,12 @@ const Products = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-8 items-center justify-center w-full">
+          <div className="grid gap-8 w-full">
             {products.map((product, index) => (
-              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-md sm:max-w-lg mx-auto px-4 sm:px-6 break-words">
+              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 px-4 sm:px-6 lg:px-8 break-words">
                 <div className="grid w-full max-w-full lg:grid-cols-3 gap-6">
                   {/* Product Image */}
-                  <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full max-h-48 sm:max-h-64 flex items-center justify-center">
+                  <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full max-h-48 sm:max-h-64 lg:max-h-80 flex items-center justify-center">
                     <img
                       src={product.image}
                       alt={product.name}
