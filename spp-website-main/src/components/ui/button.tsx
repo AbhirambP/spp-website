@@ -29,6 +29,28 @@ const buttonVariants = cva(
         icon: "h-10 w-10",
       },
     },
+    compoundVariants: [
+      {
+        wrap: true,
+        size: "default",
+        class: "!h-auto min-h-10",
+      },
+      {
+        wrap: true,
+        size: "sm",
+        class: "!h-auto min-h-9",
+      },
+      {
+        wrap: true,
+        size: "lg",
+        class: "!h-auto min-h-11",
+      },
+      {
+        wrap: true,
+        size: "icon",
+        class: "!h-auto min-h-10",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",

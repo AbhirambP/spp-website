@@ -230,7 +230,7 @@ const Products = () => {
                         <Button asChild wrap className="hero-gradient w-full max-w-full break-words whitespace-normal text-center text-xs sm:text-sm md:text-base">
                           <Link to="/contact#quote" className="w-full max-w-full break-words whitespace-normal text-center flex flex-wrap items-center justify-center gap-2">
                             <Phone className="w-4 h-4" />
-                            <span className="break-words max-w-full hyphens-auto">Request Quote for {product.name}</span>
+                            <span className="break-words max-w-full hyphens-auto leading-snug">Request Quote for {product.name}</span>
                           </Link>
                         </Button>
                       </div>
