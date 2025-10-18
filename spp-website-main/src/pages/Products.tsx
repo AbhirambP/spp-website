@@ -181,7 +181,7 @@ const Products = () => {
 
           <div className="flex flex-col gap-8 items-center justify-center w-full">
             {products.map((product, index) => (
-              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-md mx-auto px-2 sm:px-4 break-words max-w-full">
+              <Card key={index} className="shadow-card hover:shadow-elevated transition-shadow w-full max-w-md sm:max-w-lg mx-auto px-4 sm:px-6 break-words">
                 <div className="grid w-full max-w-full lg:grid-cols-3 gap-6">
                   {/* Product Image */}
                   <div className="aspect-video overflow-hidden rounded-lg bg-muted w-full max-w-full max-h-48 sm:max-h-64 flex items-center justify-center">
@@ -194,12 +194,12 @@ const Products = () => {
 
                   {/* Product Content */}
                   <div className="lg:col-span-2">
-                    <CardHeader className="break-words max-w-full">
-                      <CardTitle className="text-2xl text-foreground break-words max-w-full">{product.name}</CardTitle>
-                      <p className="text-muted-foreground break-words max-w-full">{product.description}</p>
+                    <CardHeader className="break-words max-w-full text-left">
+                      <CardTitle className="text-2xl text-foreground break-words max-w-full text-left hyphens-auto">{product.name}</CardTitle>
+                      <p className="text-muted-foreground break-words max-w-full text-left hyphens-auto">{product.description}</p>
                     </CardHeader>
-                    <CardContent className="break-words max-w-full">
-                      <div className="grid lg:grid-cols-2 gap-8 break-words max-w-full">
+                    <CardContent className="break-words max-w-full text-left">
+                      <div className="grid lg:grid-cols-2 gap-8 break-words max-w-full text-left">
                         {/* Specifications */}
                         <div>
                           <h4 className="font-semibold text-foreground mb-3">Specifications</h4>
@@ -207,7 +207,7 @@ const Products = () => {
                             {product.specifications.map((spec, specIndex) => (
                               <li key={specIndex} className="flex items-start space-x-2">
                                 <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                                <span className="text-muted-foreground text-sm break-words max-w-full">{spec}</span>
+                                <span className="text-muted-foreground text-sm break-words max-w-full hyphens-auto">{spec}</span>
                               </li>
                             ))}
                           </ul>
@@ -227,10 +227,10 @@ const Products = () => {
                       </div>
 
                       <div className="mt-6 pt-6 border-t border-border break-words max-w-full">
-                        <Button asChild className="hero-gradient w-full max-w-full break-words text-xs sm:text-sm md:text-base">
-                          <Link to="/contact#quote" className="w-full max-w-full break-words">
-                            <Phone className="w-4 h-4 mr-2" />
-                            <span className="break-words max-w-full">Request Quote for {product.name}</span>
+                        <Button asChild wrap className="hero-gradient w-full max-w-full break-words whitespace-normal text-center text-xs sm:text-sm md:text-base">
+                          <Link to="/contact#quote" className="w-full max-w-full break-words whitespace-normal text-center flex flex-wrap items-center justify-center gap-2">
+                            <Phone className="w-4 h-4" />
+                            <span className="break-words max-w-full hyphens-auto">Request Quote for {product.name}</span>
                           </Link>
                         </Button>
                       </div>
