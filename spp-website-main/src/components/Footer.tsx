@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 
 const Footer = () => {
   const handleLinkClick = () => {
@@ -44,18 +44,22 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Leading manufacturer and supplier of high-quality LDPE polythene bags for pharmaceutical
+              Leading manufacturer and supplier of high-quality LDPE polythene bags for pharmaceutical, Food  
               and industrial applications. Committed to excellence and customer satisfaction.
             </p>
 
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>Adj to shed no.:13/A/5, Phase IV, IDA Jeedimetla, Hyderabad - 55</span>
+                <span>Adj to shed no.:13/A/5, Phase IV, IDA Jeedimetla, Hyderabad - 500055, Telangana, India</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
                 <span>+91 9666511637</span>
+              </div>
+              <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                <MessageSquare className="w-4 h-4 text-primary" />
+                <span>WhatsApp: +91 7997766179</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
