@@ -148,7 +148,7 @@ ${formData.name}
   }, {
     icon: <Phone className="w-6 h-6 text-primary" />,
     title: "Phone Numbers",
-    details: ["+91 9666511637", "+91 9866106621"]
+    details: ["+91 9666511637", "+91 9866106621", "+91 7997766179"]
   }, {
     icon: <Mail className="w-6 h-6 text-primary" />,
     title: "Email Addresses",
