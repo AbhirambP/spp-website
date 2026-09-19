@@ -43,7 +43,7 @@ const Home = () => {
     {
       icon: <Users className="w-8 h-8 text-primary" />,
       title: "Industry Expertise",
-      description: "Decades of experience serving pharmaceutical and industrial clients worldwide."
+      description: "Decades of experience serving pharmaceutical, food and industrial clients worldwide."
     },
     {
       icon: <Settings className="w-8 h-8 text-primary" />,
@@ -119,7 +119,7 @@ const Home = () => {
             </h1>
             <p className="text-lg sm:text-xl mb-8 text-blue-100 max-w-2xl">
               Leading manufacturer and supplier of high-quality LDPE polythene bags for
-              pharmaceutical and industrial applications across India.
+              pharmaceutical, food and industrial applications across India.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">

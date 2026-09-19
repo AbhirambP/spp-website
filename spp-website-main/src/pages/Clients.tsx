@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 import { Users, Building2, Star, Quote, Award, TrendingUp, Globe, Phone, Heart, CheckCircle } from "lucide-react";
 import skplLogo from "@/assets/client-logos/skpl-logo.jpg";
 import sanzymelogo from "@/assets/client-logos/sanzyme-biologics-logo.jpg";
-import leePharmaLogo from "@/assets/client-logos/lee-pharma-logo.jpg";
-import salicylatesLogo from "@/assets/client-logos/salicylates-chemicals-logo.jpg";
 import biologicalELogo from "@/assets/client-logos/biological-e-logo.jpg";
-import vintageCoffeeLogo from "@/assets/client-logos/vintage-coffee-logo.jpg";
-import schneiderElectricLogo from "@/assets/client-logos/schneider-electric-logo.jpg";
-import clariantIndiaLogo from "@/assets/client-logos/clariant-india-logo.jpg";
 import { Helmet } from "react-helmet-async";
 const Clients = () => {
   const clients = [{
@@ -22,28 +17,8 @@ const Clients = () => {
     logo: sanzymelogo,
     location: "India"
   }, {
-    name: "Lee Pharma Ltd",
-    logo: leePharmaLogo,
-    location: "India"
-  }, {
-    name: "Salicylates and Chemicals Pvt Ltd",
-    logo: salicylatesLogo,
-    location: "India"
-  }, {
     name: "Biological E. Limited",
     logo: biologicalELogo,
-    location: "India"
-  }, {
-    name: "Vintage Coffee Pvt Ltd",
-    logo: vintageCoffeeLogo,
-    location: "India"
-  }, {
-    name: "Schneider Electric India Pvt Ltd",
-    logo: schneiderElectricLogo,
-    location: "India"
-  }, {
-    name: "Clariant India Pvt Ltd",
-    logo: clariantIndiaLogo,
     location: "India"
   }];
   const testimonials = [{
